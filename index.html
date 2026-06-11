@@ -25,7 +25,7 @@
             cursor: crosshair;
         }
 
-        /* Intro Screen */
+        /* Compact Intro Screen */
         #introScreen {
             position: fixed;
             top: 0;
@@ -38,87 +38,171 @@
             justify-content: center;
             align-items: center;
             z-index: 10000;
-            overflow: hidden;
         }
 
-        .dragon-balls-container {
-            position: absolute;
+        .intro-content {
+            text-align: center;
+            padding: 30px;
+            max-width: 600px;
+            background: rgba(0, 0, 0, 0.7);
+            border: 3px solid #ff8c00;
+            border-radius: 20px;
+            box-shadow: 0 0 50px rgba(255, 140, 0, 0.5);
+        }
+
+        .main-title {
+            font-family: 'Cinzel', serif;
+            font-size: 3em;
+            background: linear-gradient(90deg, #ff8c00, #ffaa00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+        }
+
+        .login-form {
+            margin: 20px 0;
+        }
+
+        .login-form input {
+            display: block;
             width: 100%;
-            height: 100%;
-            pointer-events: none;
+            margin: 10px 0;
+            padding: 12px;
+            background: rgba(255, 140, 0, 0.1);
+            border: 2px solid #ff8c00;
+            border-radius: 8px;
+            color: #fff;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1em;
         }
 
-        .dragon-ball {
-            position: absolute;
-            width: 80px;
-            height: 80px;
-            background: radial-gradient(circle at 30% 30%, #ffaa00, #ff6600, #cc3300);
+        .btn {
+            padding: 12px 30px;
+            margin: 5px;
+            background: linear-gradient(135deg, #ff8c00, #ff6600);
+            border: none;
+            border-radius: 25px;
+            color: #000;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(255, 140, 0, 0.8);
+        }
+
+        .dragon-balls-intro {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .db-intro {
+            width: 40px;
+            height: 40px;
+            background: radial-gradient(circle at 30% 30%, #ffaa00, #ff6600);
             border-radius: 50%;
-            box-shadow: 0 0 40px rgba(255, 102, 0, 0.9), inset -5px -5px 15px rgba(0,0,0,0.3);
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: bold;
             color: #ff0000;
-            font-size: 2em;
-            animation: float 3s ease-in-out infinite;
+            animation: float 2s infinite;
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-30px) rotate(180deg); }
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
 
-        .intro-content {
+        /* Dragon Summoning Screen */
+        #shenronScreen {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 20000;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .shenron-container {
             text-align: center;
-            z-index: 10;
-            padding: 40px;
-            max-width: 1000px;
+            animation: shenronAppear 2s ease;
         }
 
-        .main-title {
+        @keyframes shenronAppear {
+            0% { transform: scale(0); opacity: 0; }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .shenron-dragon {
+            font-size: 8em;
+            margin-bottom: 30px;
+            animation: dragonFloat 3s ease-in-out infinite;
+            filter: drop-shadow(0 0 40px #00ff00);
+        }
+
+        @keyframes dragonFloat {
+            0%, 100% { transform: translateY(0) rotate(-5deg); }
+            50% { transform: translateY(-30px) rotate(5deg); }
+        }
+
+        .shenron-text {
+            font-size: 2.5em;
+            color: #00ff00;
+            margin-bottom: 30px;
+            text-shadow: 0 0 30px #00ff00;
             font-family: 'Cinzel', serif;
-            font-size: 5em;
-            font-weight: 900;
-            background: linear-gradient(90deg, #ff8c00, #ffaa00, #ff6600, #ff8c00);
-            background-size: 300% 300%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: gradientShift 3s ease infinite;
-            margin-bottom: 20px;
-            text-shadow: 0 0 60px rgba(255, 140, 0, 0.8);
         }
 
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        .reward-choices {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
         }
 
-        .start-button {
-            margin-top: 40px;
-            padding: 25px 80px;
-            font-size: 1.8em;
-            font-family: 'Orbitron', sans-serif;
-            font-weight: bold;
-            background: linear-gradient(135deg, #ff8c00, #ff6600);
-            border: none;
-            border-radius: 50px;
-            color: #000;
+        .reward-card {
+            background: linear-gradient(135deg, rgba(255, 140, 0, 0.2), rgba(0, 0, 0, 0.8));
+            border: 3px solid #ff8c00;
+            border-radius: 15px;
+            padding: 30px;
+            width: 250px;
             cursor: pointer;
             transition: all 0.3s;
-            box-shadow: 0 0 50px rgba(255, 140, 0, 0.8);
-            animation: buttonPulse 2s infinite;
         }
 
-        @keyframes buttonPulse {
-            0%, 100% { box-shadow: 0 0 50px rgba(255, 140, 0, 0.8); }
-            50% { box-shadow: 0 0 80px rgba(255, 140, 0, 1), 0 0 120px rgba(255, 102, 0, 0.6); }
+        .reward-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 0 40px rgba(255, 140, 0, 0.8);
+            border-color: #00ff00;
         }
 
-        .start-button:hover {
-            transform: scale(1.1);
+        .reward-icon {
+            font-size: 4em;
+            margin-bottom: 15px;
+        }
+
+        .reward-title {
+            color: #ff8c00;
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+
+        .reward-desc {
+            color: #aaa;
+            font-size: 0.9em;
         }
 
         /* UI Panels */
@@ -132,15 +216,16 @@
             backdrop-filter: blur(10px);
         }
 
-        /* Top Bar */
         .top-bar {
             top: 10px;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
-            gap: 30px;
+            gap: 20px;
             align-items: center;
-            padding: 15px 30px;
+            padding: 10px 20px;
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
         .stat-item {
@@ -149,23 +234,20 @@
 
         .stat-label {
             color: #00d4ff;
-            font-size: 0.9em;
-            margin-bottom: 5px;
+            font-size: 0.8em;
         }
 
         .stat-value {
             color: #ff8c00;
-            font-size: 1.3em;
             font-weight: bold;
         }
 
         .bar-container {
-            width: 150px;
-            height: 20px;
+            width: 100px;
+            height: 15px;
             background: #333;
-            border-radius: 10px;
+            border-radius: 8px;
             overflow: hidden;
-            border: 2px solid #555;
         }
 
         .bar-fill {
@@ -177,37 +259,34 @@
         .ki-bar { background: linear-gradient(90deg, #00d4ff, #ff8c00); }
         .xp-bar { background: linear-gradient(90deg, #9900ff, #ff00ff); }
 
-        /* Left Panel - Character */
         .left-panel {
             left: 10px;
-            top: 120px;
+            top: 100px;
+            width: 250px;
+            max-height: 50vh;
+            overflow-y: auto;
+        }
+
+        .right-panel {
+            right: 10px;
+            top: 100px;
             width: 280px;
             max-height: 60vh;
             overflow-y: auto;
         }
 
-        /* Right Panel - Abilities & Inventory */
-        .right-panel {
-            right: 10px;
-            top: 120px;
-            width: 300px;
-            max-height: 70vh;
-            overflow-y: auto;
-        }
-
-        /* Bottom Panel - Quick Bar */
         .bottom-panel {
             bottom: 10px;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
             gap: 10px;
-            padding: 15px;
+            padding: 10px;
         }
 
         .ability-slot {
-            width: 70px;
-            height: 70px;
+            width: 60px;
+            height: 60px;
             background: rgba(0, 0, 0, 0.7);
             border: 3px solid #444;
             border-radius: 10px;
@@ -223,47 +302,29 @@
         .ability-slot:hover {
             border-color: #ff8c00;
             transform: scale(1.1);
-            box-shadow: 0 0 20px rgba(255, 140, 0, 0.6);
         }
 
         .ability-slot.active {
             border-color: #00ff00;
-            box-shadow: 0 0 30px rgba(0, 255, 0, 0.8);
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.6);
         }
 
-        .ability-icon {
-            font-size: 2em;
-        }
-
+        .ability-icon { font-size: 1.8em; }
         .ability-key {
             position: absolute;
             top: 2px;
             left: 5px;
             background: #ff8c00;
             color: #000;
-            width: 20px;
-            height: 20px;
-            border-radius: 5px;
+            width: 18px;
+            height: 18px;
+            border-radius: 4px;
+            font-size: 0.7em;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.7em;
-            font-weight: bold;
         }
 
-        .ability-cooldown {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(0, 0, 0, 0.8);
-            color: #fff;
-            text-align: center;
-            font-size: 0.8em;
-            padding: 2px;
-        }
-
-        /* Tabs */
         .tabs {
             display: flex;
             gap: 5px;
@@ -272,26 +333,24 @@
 
         .tab {
             flex: 1;
-            padding: 8px;
+            padding: 6px;
             background: rgba(255, 140, 0, 0.2);
             border: 2px solid #ff8c00;
             border-radius: 5px;
             cursor: pointer;
             text-align: center;
-            transition: all 0.3s;
+            font-size: 0.9em;
         }
 
-        .tab:hover, .tab.active {
+        .tab.active {
             background: #ff8c00;
             color: #000;
         }
 
-        /* Item Grid */
         .item-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 8px;
-            margin-top: 10px;
         }
 
         .item-slot {
@@ -303,20 +362,13 @@
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            transition: all 0.3s;
+            font-size: 1.8em;
             position: relative;
-            font-size: 2em;
         }
 
         .item-slot:hover {
             border-color: #ff8c00;
             background: rgba(255, 140, 0, 0.2);
-            transform: scale(1.1);
-        }
-
-        .item-slot.equipped {
-            border-color: #00ff00;
-            box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
         }
 
         .item-count {
@@ -325,136 +377,54 @@
             right: 5px;
             color: #fff;
             font-size: 0.6em;
-            font-weight: bold;
         }
 
-        /* Building Menu */
-        .building-menu {
+        .dragon-ball-counter {
             position: absolute;
-            bottom: 100px;
-            left: 50%;
-            transform: translateX(-50%);
+            top: 10px;
+            right: 10px;
             background: rgba(0, 0, 0, 0.9);
             border: 3px solid #ff8c00;
             border-radius: 15px;
-            padding: 20px;
-            display: none;
-            gap: 15px;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
-        .building-menu.show {
+        .db-collected {
+            width: 30px;
+            height: 30px;
+            background: radial-gradient(circle at 30% 30%, #ffaa00, #ff6600);
+            border-radius: 50%;
             display: flex;
-        }
-
-        .building-option {
-            width: 100px;
-            height: 100px;
-            background: rgba(255, 140, 0, 0.1);
-            border: 2px solid #ff8c00;
-            border-radius: 10px;
-            display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .building-option:hover {
-            background: rgba(255, 140, 0, 0.3);
-            transform: scale(1.1);
-        }
-
-        .building-icon {
-            font-size: 2.5em;
-            margin-bottom: 5px;
-        }
-
-        .building-name {
             font-size: 0.8em;
-            text-align: center;
-        }
-
-        .building-cost {
-            font-size: 0.7em;
-            color: #ffaa00;
-        }
-
-        /* Notifications */
-        .notification {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: rgba(0, 0, 0, 0.95);
-            border: 4px solid #ff8c00;
-            border-radius: 20px;
-            padding: 40px;
-            text-align: center;
-            z-index: 1000;
-            display: none;
-            animation: slideIn 0.5s ease;
-        }
-
-        @keyframes slideIn {
-            from { transform: translate(-50%, -50%) scale(0.5); opacity: 0; }
-            to { transform: translate(-50%, -50%) scale(1); opacity: 1; }
-        }
-
-        /* Tooltip */
-        .tooltip {
-            position: absolute;
-            background: rgba(0, 0, 0, 0.95);
-            border: 2px solid #ff8c00;
-            border-radius: 8px;
-            padding: 10px;
-            max-width: 250px;
-            z-index: 10000;
-            pointer-events: none;
-            display: none;
-        }
-
-        .tooltip-title {
-            color: #ff8c00;
             font-weight: bold;
-            margin-bottom: 5px;
+            color: #ff0000;
         }
 
-        .tooltip-desc {
-            color: #aaa;
-            font-size: 0.9em;
+        .db-empty {
+            width: 30px;
+            height: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid #444;
+            border-radius: 50%;
         }
 
-        /* Minimap */
-        .minimap {
-            position: absolute;
-            bottom: 10px;
-            right: 10px;
-            width: 200px;
-            height: 200px;
-            background: rgba(0, 0, 0, 0.8);
-            border: 3px solid #ff8c00;
-            border-radius: 10px;
-            overflow: hidden;
-        }
-
-        #minimapCanvas {
-            width: 100%;
-            height: 100%;
-        }
-
-        /* Messages */
         .message-log {
             position: absolute;
             bottom: 100px;
             left: 10px;
-            width: 350px;
-            max-height: 200px;
+            width: 300px;
+            max-height: 150px;
             overflow-y: auto;
             background: rgba(0, 0, 0, 0.7);
             border-radius: 10px;
             padding: 10px;
             pointer-events: none;
+            font-size: 0.85em;
         }
 
         .message {
@@ -462,50 +432,87 @@
             padding: 5px;
             background: rgba(255, 140, 0, 0.1);
             border-left: 3px solid #ff8c00;
-            padding-left: 10px;
-            animation: fadeIn 0.3s ease;
+            padding-left: 8px;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateX(-20px); }
-            to { opacity: 1; transform: translateX(0); }
+        .minimap {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            width: 150px;
+            height: 150px;
+            background: rgba(0, 0, 0, 0.8);
+            border: 2px solid #ff8c00;
+            border-radius: 10px;
         }
 
-        .hidden {
-            display: none !important;
+        #minimapCanvas {
+            width: 100%;
+            height: 100%;
         }
 
-        /* Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
+        .hidden { display: none !important; }
 
-        ::-webkit-scrollbar-track {
-            background: #1a1f4d;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #ff8c00;
-            border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: #ffaa00;
-        }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #1a1f4d; }
+        ::-webkit-scrollbar-thumb { background: #ff8c00; border-radius: 4px; }
     </style>
 </head>
 <body>
-    <!-- Intro Screen -->
+    <!-- Intro/Login Screen -->
     <div id="introScreen">
-        <div class="dragon-balls-container" id="dragonBalls"></div>
         <div class="intro-content">
             <h1 class="main-title">DRAGON BALL</h1>
-            <h2 style="color: #00d4ff; font-size: 2.5em; margin-bottom: 30px;">INFINITE UNIVERSE</h2>
-            <p style="font-size: 1.3em; line-height: 1.8; color: #fff; margin-bottom: 40px;">
-                Исследуй бесконечную вселенную, строй базы, сражайся с легендами<br>
-                и стань сильнейшим воином галактики!
-            </p>
-            <button class="start-button" onclick="startGame()">НАЧАТЬ ПРИКЛЮЧЕНИЕ 🐉</button>
+            <h2 style="color: #00d4ff; font-size: 1.5em; margin-bottom: 20px;">INFINITE UNIVERSE</h2>
+            
+            <div class="dragon-balls-intro">
+                <div class="db-intro" style="animation-delay: 0s">1</div>
+                <div class="db-intro" style="animation-delay: 0.1s">2</div>
+                <div class="db-intro" style="animation-delay: 0.2s">3</div>
+                <div class="db-intro" style="animation-delay: 0.3s">4</div>
+                <div class="db-intro" style="animation-delay: 0.4s">5</div>
+                <div class="db-intro" style="animation-delay: 0.5s">6</div>
+                <div class="db-intro" style="animation-delay: 0.6s">7</div>
+            </div>
+
+            <div class="login-form">
+                <input type="text" id="username" placeholder="Имя воина" maxlength="15">
+                <div style="margin: 15px 0;">
+                    <button class="btn" onclick="newGame()">🎮 Новая игра</button>
+                    <button class="btn" onclick="loadGame()">📂 Загрузить</button>
+                </div>
+                <div style="font-size: 0.8em; color: #888; margin-top: 10px;">
+                    Прогресс сохраняется автоматически
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Shenron Summoning Screen -->
+    <div id="shenronScreen">
+        <div class="shenron-container">
+            <div class="shenron-dragon">🐉</div>
+            <div class="shenron-text">Я ШЕНРОН!<br>Выбери свою награду:</div>
+            
+            <div class="reward-choices">
+                <div class="reward-card" onclick="chooseReward('weapon')">
+                    <div class="reward-icon">⚔️</div>
+                    <div class="reward-title">Легендарное оружие</div>
+                    <div class="reward-desc">Меч Дракона<br>+150 к атаке<br>Уникальный эффект</div>
+                </div>
+                
+                <div class="reward-card" onclick="chooseReward('skill')">
+                    <div class="reward-icon">✨</div>
+                    <div class="reward-title">Ультимативный навык</div>
+                    <div class="reward-desc">Духовная бомба<br>Массовый урон<br>Перезарядка 30с</div>
+                </div>
+                
+                <div class="reward-card" onclick="chooseReward('health')">
+                    <div class="reward-icon">❤️</div>
+                    <div class="reward-title">Вечная жизнь</div>
+                    <div class="reward-desc">+500 к здоровью<br>+200 к Ки<br>Регенерация x2</div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -513,155 +520,108 @@
     <div id="gameContainer" style="display: none; position: fixed; width: 100%; height: 100%;">
         <canvas id="gameCanvas"></canvas>
 
+        <!-- Dragon Ball Counter -->
+        <div class="dragon-ball-counter">
+            <span style="color: #ff8c00; font-weight: bold;">Шары:</span>
+            <div id="dbCounter"></div>
+        </div>
+
         <!-- Top Bar -->
         <div class="ui-panel top-bar">
             <div class="stat-item">
-                <div class="stat-label">❤️ Здоровье</div>
+                <div class="stat-label">❤️ HP</div>
                 <div class="bar-container">
                     <div class="bar-fill hp-bar" id="hpBar" style="width: 100%"></div>
                 </div>
-                <div class="stat-value" id="hpText">100/100</div>
             </div>
             <div class="stat-item">
                 <div class="stat-label">⚡ Ки</div>
                 <div class="bar-container">
                     <div class="bar-fill ki-bar" id="kiBar" style="width: 100%"></div>
                 </div>
-                <div class="stat-value" id="kiText">100/100</div>
             </div>
             <div class="stat-item">
-                <div class="stat-label">⭐ Уровень</div>
-                <div class="stat-value" id="levelVal" style="font-size: 2em;">1</div>
+                <div class="stat-label">⭐ LVL</div>
+                <div class="stat-value" id="levelVal" style="font-size: 1.5em;">1</div>
             </div>
             <div class="stat-item">
-                <div class="stat-label">💪 Опыт</div>
-                <div class="bar-container">
-                    <div class="bar-fill xp-bar" id="xpBar" style="width: 0%"></div>
-                </div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-label">💰 Зени</div>
+                <div class="stat-label">💰 Z</div>
                 <div class="stat-value" id="zeni">0</div>
             </div>
             <div class="stat-item">
-                <div class="stat-label">📍 Координаты</div>
-                <div class="stat-value" id="coords">0, 0</div>
+                <div class="stat-label">⚔️ ATK</div>
+                <div class="stat-value" id="attackStat">100</div>
             </div>
         </div>
 
         <!-- Left Panel -->
         <div class="ui-panel left-panel">
             <div class="tabs">
-                <div class="tab active" onclick="switchTab('character')">👤 Герой</div>
-                <div class="tab" onclick="switchTab('quests')">📜 Задания</div>
+                <div class="tab active" onclick="switchTab('char')">👤</div>
+                <div class="tab" onclick="switchTab('inv')">🎒</div>
+                <div class="tab" onclick="saveGame()">💾</div>
             </div>
             
-            <div id="characterTab">
-                <h3 style="color: #ff8c00; margin-bottom: 15px; border-bottom: 2px solid #ff8c00; padding-bottom: 10px;">
-                    Характеристики
-                </h3>
-                <div style="margin: 10px 0;">
+            <div id="charTab">
+                <div style="margin: 10px 0; font-size: 0.9em;">
                     <div style="display: flex; justify-content: space-between; margin: 5px 0;">
-                        <span style="color: #00d4ff;">⚔️ Атака:</span>
-                        <span style="color: #ff8c00;" id="attackStat">100</span>
+                        <span style="color: #00d4ff;">Атака:</span>
+                        <span style="color: #ff8c00;" id="attackVal">100</span>
                     </div>
                     <div style="display: flex; justify-content: space-between; margin: 5px 0;">
-                        <span style="color: #00d4ff;">🛡️ Защита:</span>
-                        <span style="color: #ff8c00;" id="defenseStat">50</span>
+                        <span style="color: #00d4ff;">Защита:</span>
+                        <span style="color: #ff8c00;" id="defenseVal">50</span>
                     </div>
                     <div style="display: flex; justify-content: space-between; margin: 5px 0;">
-                        <span style="color: #00d4ff;">⚡ Скорость:</span>
-                        <span style="color: #ff8c00;" id="speedStat">5</span>
-                    </div>
-                    <div style="display: flex; justify-content: space-between; margin: 5px 0;">
-                        <span style="color: #00d4ff;">💫 Удача:</span>
-                        <span style="color: #ff8c00;" id="luckStat">10</span>
+                        <span style="color: #00d4ff;">Скорость:</span>
+                        <span style="color: #ff8c00;" id="speedVal">5</span>
                     </div>
                 </div>
                 
-                <h3 style="color: #ff8c00; margin: 20px 0 10px; border-bottom: 2px solid #ff8c00; padding-bottom: 10px;">
-                    Экипировка
-                </h3>
+                <h3 style="color: #ff8c00; margin: 15px 0 10px; font-size: 1em;">Экипировка</h3>
                 <div class="item-grid" id="equipmentGrid"></div>
             </div>
 
-            <div id="questsTab" class="hidden">
-                <div id="questList"></div>
+            <div id="invTab" class="hidden">
+                <h3 style="color: #ff8c00; margin-bottom: 10px; font-size: 1em;">Инвентарь</h3>
+                <div class="item-grid" id="inventoryGrid"></div>
             </div>
         </div>
 
         <!-- Right Panel -->
         <div class="ui-panel right-panel">
             <div class="tabs">
-                <div class="tab active" onclick="switchRightTab('inventory')">🎒 Инвентарь</div>
-                <div class="tab" onclick="switchRightTab('shop')">🏪 Магазин</div>
+                <div class="tab active" onclick="switchRightTab('abilities')">⚡</div>
+                <div class="tab" onclick="switchRightTab('shop')">🏪</div>
             </div>
             
-            <div id="inventoryTab">
-                <div class="item-grid" id="inventoryGrid"></div>
+            <div id="abilitiesTab">
+                <div style="font-size: 0.85em; color: #888; margin-bottom: 10px;">
+                    Способности (1-4)
+                </div>
+                <div id="abilitiesList"></div>
             </div>
 
             <div id="shopTab" class="hidden">
-                <h3 style="color: #ff8c00; margin-bottom: 15px;">Товары</h3>
                 <div id="shopItems"></div>
             </div>
         </div>
 
         <!-- Bottom Quick Bar -->
-        <div class="ui-panel bottom-panel" id="quickBar">
-            <!-- Generated by JS -->
-        </div>
+        <div class="ui-panel bottom-panel" id="quickBar"></div>
 
-        <!-- Building Menu -->
-        <div class="building-menu" id="buildingMenu">
-            <div class="building-option" onclick="build('house')">
-                <div class="building-icon">🏠</div>
-                <div class="building-name">Дом</div>
-                <div class="building-cost">500 Z</div>
-            </div>
-            <div class="building-option" onclick="build('training')">
-                <div class="building-icon">️</div>
-                <div class="building-name">Зал</div>
-                <div class="building-cost">1000 Z</div>
-            </div>
-            <div class="building-option" onclick="build('lab')">
-                <div class="building-icon">🔬</div>
-                <div class="building-name">Лаборатория</div>
-                <div class="building-cost">2000 Z</div>
-            </div>
-            <div class="building-option" onclick="build('farm')">
-                <div class="building-icon"></div>
-                <div class="building-name">Ферма</div>
-                <div class="building-cost">750 Z</div>
-            </div>
-            <div class="building-option" onclick="closeBuildingMenu()">
-                <div class="building-icon">❌</div>
-                <div class="building-name">Закрыть</div>
-            </div>
-        </div>
+        <!-- Message Log -->
+        <div class="message-log" id="messageLog"></div>
 
         <!-- Minimap -->
         <div class="minimap">
             <canvas id="minimapCanvas"></canvas>
         </div>
-
-        <!-- Message Log -->
-        <div class="message-log" id="messageLog"></div>
-
-        <!-- Tooltip -->
-        <div class="tooltip" id="tooltip">
-            <div class="tooltip-title" id="tooltipTitle"></div>
-            <div class="tooltip-desc" id="tooltipDesc"></div>
-        </div>
     </div>
 
     <script>
         // Game Constants
-        const WORLD_WIDTH = 5000;
-        const WORLD_HEIGHT = 5000;
-        const TILE_SIZE = 50;
-        
-        // Canvas setup
+        const WORLD_SIZE = 4000;
         const canvas = document.getElementById('gameCanvas');
         const ctx = canvas.getContext('2d');
         const minimapCanvas = document.getElementById('minimapCanvas');
@@ -669,20 +629,18 @@
         
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
-        minimapCanvas.width = 200;
-        minimapCanvas.height = 200;
+        minimapCanvas.width = 150;
+        minimapCanvas.height = 150;
 
-        // Game State
+        let currentUser = '';
         let gameRunning = false;
         let camera = { x: 0, y: 0 };
-        let mouse = { x: 0, y: 0, worldX: 0, worldY: 0 };
-        
-        // Player
+        let mouse = { x: 0, y: 0 };
+
+        // Game State
         let player = {
-            x: WORLD_WIDTH / 2,
-            y: WORLD_HEIGHT / 2,
-            width: 40,
-            height: 40,
+            x: WORLD_SIZE / 2,
+            y: WORLD_SIZE / 2,
             hp: 100,
             maxHp: 100,
             ki: 100,
@@ -694,207 +652,199 @@
             attack: 100,
             defense: 50,
             speed: 5,
-            luck: 10,
             inventory: [],
-            equipment: {
-                weapon: null,
-                armor: null,
-                accessory: null
-            },
+            equipment: { weapon: null, armor: null },
             abilities: [
-                { id: 'ki_blast', name: 'Ки-бласт', icon: '💥', key: '1', cooldown: 0, maxCooldown: 2, cost: 10, damage: 50 },
+                { id: 'ki_blast', name: 'Ки-бласт', icon: '💥', key: '1', cooldown: 0, maxCooldown: 3, cost: 10, damage: 50 },
                 { id: 'kamehameha', name: 'Камехамеха', icon: '', key: '2', cooldown: 0, maxCooldown: 10, cost: 50, damage: 150 },
-                { id: 'teleport', name: 'Телепорт', icon: '⚡', key: '3', cooldown: 0, maxCooldown: 15, cost: 30, damage: 0 },
-                { id: 'super_saiyan', name: 'Супер Сайян', icon: '', key: '4', cooldown: 0, maxCooldown: 60, cost: 100, damage: 0, buff: true }
+                { id: 'teleport', name: 'Телепорт', icon: '⚡', key: '3', cooldown: 0, maxCooldown: 15, cost: 30 },
+                { id: 'super_saiyan', name: 'Супер Сайян', icon: '', key: '4', cooldown: 0, maxCooldown: 60, cost: 100, buff: true }
             ],
             activeBuffs: [],
-            buildings: []
+            dragonBalls: 0
         };
 
-        // World Objects
         let enemies = [];
         let items = [];
-        let buildings = [];
-        let particles = [];
         let projectiles = [];
+        let particles = [];
+        let dragonBalls = [];
 
         // Items Database
         const itemsDB = {
-            // Weapons
-            'sword_basic': { name: 'Меч новичка', type: 'weapon', icon: '⚔️', attack: 20, price: 500, rarity: 'common' },
-            'sword_ki': { name: 'Ки-меч', type: 'weapon', icon: '', attack: 50, price: 2000, rarity: 'rare' },
-            'sword_dragon': { name: 'Меч Дракона', type: 'weapon', icon: '', attack: 100, price: 10000, rarity: 'legendary' },
-            
-            // Armor
-            'armor_basic': { name: 'Броня новичка', type: 'armor', icon: '', defense: 15, price: 400, rarity: 'common' },
-            'armor_saiyan': { name: 'Броня Сайяна', type: 'armor', icon: '', defense: 40, price: 1500, rarity: 'rare' },
-            'armor_god': { name: 'Божественная броня', type: 'armor', icon: '', defense: 80, price: 8000, rarity: 'legendary' },
-            
-            // Accessories
-            'ring_power': { name: 'Кольцо силы', type: 'accessory', icon: '', attack: 10, price: 600, rarity: 'common' },
-            'amulet_ki': { name: 'Амулет Ки', type: 'accessory', icon: '', kiRegen: 5, price: 1200, rarity: 'rare' },
-            
-            // Consumables
-            'senzu': { name: 'Боб Сензу', type: 'consumable', icon: '🫘', effect: 'heal_full', price: 300 },
-            'ki_potion': { name: 'Зелье Ки', type: 'consumable', icon: '', effect: 'ki_full', price: 200 },
-            'power_potion': { name: 'Зелье Силы', type: 'consumable', icon: '', effect: 'attack_boost', price: 500, duration: 300 }
+            'sword_basic': { name: 'Меч', type: 'weapon', icon: '⚔️', attack: 20, price: 500 },
+            'sword_ki': { name: 'Ки-меч', type: 'weapon', icon: '', attack: 50, price: 2000 },
+            'sword_dragon': { name: 'Меч Дракона', type: 'weapon', icon: '', attack: 150, price: 10000, legendary: true },
+            'armor_basic': { name: 'Броня', type: 'armor', icon: '', defense: 15, price: 400 },
+            'armor_saiyan': { name: 'Броня Сайяна', type: 'armor', icon: '', defense: 40, price: 1500 },
+            'senzu': { name: 'Сензу', type: 'consumable', icon: '🫘', effect: 'heal', price: 300 },
+            'ki_potion': { name: 'Зелье Ки', type: 'consumable', icon: '', effect: 'ki', price: 200 }
         };
 
-        // Shop items
-        const shopItems = ['sword_basic', 'armor_basic', 'senzu', 'ki_potion', 'ring_power'];
+        const shopItems = ['sword_basic', 'armor_basic', 'senzu', 'ki_potion'];
 
-        // Input handling
         const keys = {};
-        
+
         window.addEventListener('keydown', (e) => {
             keys[e.key.toLowerCase()] = true;
-            
-            // Ability hotkeys
-            if (e.key >= '1' && e.key <= '4') {
-                useAbility(parseInt(e.key) - 1);
-            }
-            
-            // Building mode
-            if (e.key === 'b' || e.key === 'B') {
-                toggleBuildingMenu();
-            }
+            if (e.key >= '1' && e.key <= '4') useAbility(parseInt(e.key) - 1);
         });
-        
-        window.addEventListener('keyup', (e) => {
-            keys[e.key.toLowerCase()] = false;
-        });
+
+        window.addEventListener('keyup', (e) => keys[e.key.toLowerCase()] = false);
 
         canvas.addEventListener('mousemove', (e) => {
             const rect = canvas.getBoundingClientRect();
-            mouse.x = e.clientX - rect.left;
-            mouse.y = e.clientY - rect.top;
-            mouse.worldX = mouse.x + camera.x;
-            mouse.worldY = mouse.y + camera.y;
+            mouse.x = e.clientX - rect.left + camera.x;
+            mouse.y = e.clientY - rect.top + camera.y;
         });
 
-        canvas.addEventListener('click', (e) => {
-            if (e.button === 0) { // Left click
-                // Attack or interact
-                handleLeftClick();
-            } else if (e.button === 2) { // Right click
-                // Move to position
-                player.targetX = mouse.worldX;
-                player.targetY = mouse.worldY;
+        canvas.addEventListener('mousedown', (e) => {
+            if (e.button === 0) handleAttack();
+        });
+
+        // Save/Load System
+        function newGame() {
+            const username = document.getElementById('username').value.trim();
+            if (!username) {
+                alert('Введите имя воина!');
+                return;
             }
-        });
-
-        canvas.addEventListener('contextmenu', e => e.preventDefault());
-
-        // Initialize Dragon Balls
-        function createDragonBalls() {
-            const container = document.getElementById('dragonBalls');
-            const positions = [
-                { top: '10%', left: '10%' },
-                { top: '15%', right: '15%' },
-                { bottom: '20%', left: '20%' },
-                { bottom: '15%', right: '10%' },
-                { top: '50%', left: '5%' },
-                { top: '45%', right: '8%' },
-                { bottom: '30%', left: '50%' }
-            ];
             
-            positions.forEach((pos, i) => {
-                const ball = document.createElement('div');
-                ball.className = 'dragon-ball';
-                ball.textContent = i + 1;
-                ball.style.animationDelay = (i * 0.3) + 's';
-                
-                Object.keys(pos).forEach(key => {
-                    ball.style[key] = pos[key];
-                });
-                
-                container.appendChild(ball);
-            });
+            currentUser = username;
+            resetPlayer();
+            startGame();
+        }
+
+        function loadGame() {
+            const username = document.getElementById('username').value.trim();
+            if (!username) {
+                alert('Введите имя воина!');
+                return;
+            }
+            
+            const saved = localStorage.getItem('db_save_' + username);
+            if (!saved) {
+                alert('Сохранение не найдено! Начните новую игру.');
+                return;
+            }
+            
+            currentUser = username;
+            const data = JSON.parse(saved);
+            player = { ...player, ...data };
+            startGame();
+        }
+
+        function saveGame() {
+            if (!currentUser) return;
+            
+            const saveData = {
+                x: player.x,
+                y: player.y,
+                hp: player.hp,
+                maxHp: player.maxHp,
+                ki: player.ki,
+                maxKi: player.maxKi,
+                level: player.level,
+                xp: player.xp,
+                xpToNext: player.xpToNext,
+                zeni: player.zeni,
+                attack: player.attack,
+                defense: player.defense,
+                speed: player.speed,
+                inventory: player.inventory,
+                equipment: player.equipment,
+                dragonBalls: player.dragonBalls,
+                timestamp: new Date().toISOString()
+            };
+            
+            localStorage.setItem('db_save_' + currentUser, JSON.stringify(saveData));
+            addMessage('💾 Игра сохранена!');
+            
+            setTimeout(() => {
+                alert('Игра сохранена!\nИмя: ' + currentUser + '\nУровень: ' + player.level + '\nЗени: ' + player.zeni);
+            }, 500);
+        }
+
+        function resetPlayer() {
+            player = {
+                x: WORLD_SIZE / 2,
+                y: WORLD_SIZE / 2,
+                hp: 100,
+                maxHp: 100,
+                ki: 100,
+                maxKi: 100,
+                level: 1,
+                xp: 0,
+                xpToNext: 100,
+                zeni: 1000,
+                attack: 100,
+                defense: 50,
+                speed: 5,
+                inventory: [
+                    { id: 'senzu', count: 3 },
+                    { id: 'ki_potion', count: 2 }
+                ],
+                equipment: { weapon: null, armor: null },
+                abilities: player.abilities,
+                activeBuffs: [],
+                dragonBalls: 0
+            };
         }
 
         function startGame() {
-            document.getElementById('introScreen').style.opacity = '0';
-            setTimeout(() => {
-                document.getElementById('introScreen').style.display = 'none';
-                document.getElementById('gameContainer').style.display = 'block';
-                initGame();
-            }, 1000);
-        }
-
-        function initGame() {
+            document.getElementById('introScreen').style.display = 'none';
+            document.getElementById('gameContainer').style.display = 'block';
+            
             gameRunning = true;
-            
-            // Add starting items
-            addItemToInventory('senzu', 3);
-            addItemToInventory('ki_potion', 2);
-            
-            // Generate initial world
-            for (let i = 0; i < 50; i++) {
-                spawnEnemy();
-            }
-            
-            for (let i = 0; i < 100; i++) {
-                spawnItem();
-            }
-            
-            // Create quick bar
+            initWorld();
             createQuickBar();
+            updateDragonBallCounter();
             
-            // Start game loop
             gameLoop();
+            addMessage('🎮 Добро пожаловать, ' + currentUser + '!');
+            addMessage('WASD - движение, Мышь - атака, 1-4 - способности');
             
-            // Spawn enemies periodically
+            // Auto-save every 2 minutes
             setInterval(() => {
-                if (enemies.length < 100) spawnEnemy();
-            }, 5000);
-            
-            addMessage('🎮 Добро пожаловать в Dragon Ball: Infinite Universe!');
-            addMessage('WASD - движение, Мышь - атака, 1-4 - способности, B - строительство');
+                if (currentUser) saveGame();
+            }, 120000);
         }
 
-        function createQuickBar() {
-            const quickBar = document.getElementById('quickBar');
-            quickBar.innerHTML = '';
+        function initWorld() {
+            // Spawn enemies
+            for (let i = 0; i < 40; i++) spawnEnemy();
             
-            player.abilities.forEach((ability, index) => {
-                const slot = document.createElement('div');
-                slot.className = 'ability-slot';
-                slot.id = `ability-${index}`;
-                slot.innerHTML = `
-                    <div class="ability-key">${ability.key}</div>
-                    <div class="ability-icon">${ability.icon}</div>
-                    <div style="font-size: 0.7em; margin-top: 2px;">${ability.cost}⚡</div>
-                `;
-                slot.onclick = () => useAbility(index);
-                slot.onmouseenter = (e) => showTooltip(e, ability.name, `Урон: ${ability.damage}\nСтоимость: ${ability.cost} Ки\nПерезарядка: ${ability.maxCooldown}с`);
-                slot.onmouseleave = hideTooltip;
-                quickBar.appendChild(slot);
-            });
+            // Spawn items
+            for (let i = 0; i < 80; i++) spawnItem();
             
-            // Building button
-            const buildSlot = document.createElement('div');
-            buildSlot.className = 'ability-slot';
-            buildSlot.innerHTML = `
-                <div class="ability-icon">🔨</div>
-                <div style="font-size: 0.7em;">Строй</div>
-            `;
-            buildSlot.onclick = toggleBuildingMenu;
-            quickBar.appendChild(buildSlot);
+            // Spawn Dragon Balls (very rare - only 7 in world)
+            spawnDragonBalls();
+        }
+
+        function spawnDragonBalls() {
+            for (let i = 0; i < 7; i++) {
+                dragonBalls.push({
+                    x: Math.random() * WORLD_SIZE,
+                    y: Math.random() * WORLD_SIZE,
+                    number: i + 1,
+                    collected: false,
+                    id: 'db_' + i
+                });
+            }
         }
 
         function spawnEnemy() {
             const types = [
                 { name: 'Saibaman', icon: '👾', hp: 50, attack: 20, xp: 50, zeni: 100 },
                 { name: 'Soldier', icon: '🤖', hp: 100, attack: 35, xp: 100, zeni: 200 },
-                { name: 'Warrior', icon: '💪', hp: 200, attack: 50, xp: 200, zeni: 400 },
-                { name: 'Elite', icon: '😈', hp: 400, attack: 80, xp: 500, zeni: 1000 }
+                { name: 'Warrior', icon: '💪', hp: 200, attack: 50, xp: 200, zeni: 400 }
             ];
             
             const type = types[Math.floor(Math.random() * types.length)];
             enemies.push({
                 ...type,
-                x: Math.random() * WORLD_WIDTH,
-                y: Math.random() * WORLD_HEIGHT,
+                x: Math.random() * WORLD_SIZE,
+                y: Math.random() * WORLD_SIZE,
                 maxHp: type.hp,
                 currentHp: type.hp,
                 id: Date.now() + Math.random()
@@ -902,14 +852,15 @@
         }
 
         function spawnItem() {
-            const itemTypes = ['sword_basic', 'armor_basic', 'senzu', 'ki_potion', 'ring_power'];
-            const type = itemTypes[Math.floor(Math.random() * itemTypes.length)];
+            const keys = Object.keys(itemsDB);
+            const key = keys[Math.floor(Math.random() * keys.length)];
             
             items.push({
-                ...itemsDB[type],
-                x: Math.random() * WORLD_WIDTH,
-                y: Math.random() * WORLD_HEIGHT,
-                id: Date.now() + Math.random()
+                ...itemsDB[key],
+                x: Math.random() * WORLD_SIZE,
+                y: Math.random() * WORLD_SIZE,
+                id: Date.now() + Math.random(),
+                itemId: key
             });
         }
 
@@ -925,61 +876,51 @@
         }
 
         function update() {
-            // Player movement
-            let dx = 0;
-            let dy = 0;
-            
+            // Movement
+            let dx = 0, dy = 0;
             if (keys['w'] || keys['arrowup']) dy = -player.speed;
             if (keys['s'] || keys['arrowdown']) dy = player.speed;
             if (keys['a'] || keys['arrowleft']) dx = -player.speed;
             if (keys['d'] || keys['arrowright']) dx = player.speed;
             
-            // Normalize diagonal movement
             if (dx !== 0 && dy !== 0) {
                 dx *= 0.707;
                 dy *= 0.707;
             }
             
-            player.x += dx;
-            player.y += dy;
+            player.x = Math.max(0, Math.min(WORLD_SIZE, player.x + dx));
+            player.y = Math.max(0, Math.min(WORLD_SIZE, player.y + dy));
             
-            // World bounds
-            player.x = Math.max(0, Math.min(WORLD_WIDTH, player.x));
-            player.y = Math.max(0, Math.min(WORLD_HEIGHT, player.y));
-            
-            // Update camera
+            // Camera
             camera.x = player.x - canvas.width / 2;
             camera.y = player.y - canvas.height / 2;
             
-            // Update cooldowns
-            player.abilities.forEach(ability => {
-                if (ability.cooldown > 0) ability.cooldown -= 1/60;
+            // Cooldowns
+            player.abilities.forEach(a => {
+                if (a.cooldown > 0) a.cooldown -= 1/60;
             });
             
-            // Update projectiles
+            // Projectiles
             projectiles = projectiles.filter(p => {
                 p.x += p.vx;
                 p.y += p.vy;
                 p.life--;
                 
-                // Check collision with enemies
                 enemies.forEach(enemy => {
                     const dist = Math.hypot(p.x - enemy.x, p.y - enemy.y);
                     if (dist < 30 && p.life > 0) {
                         enemy.currentHp -= p.damage;
                         p.life = 0;
-                        createParticles(enemy.x, enemy.y, '#ff8c00', 10);
+                        createParticles(enemy.x, enemy.y, '#ff8c00', 8);
                         
-                        if (enemy.currentHp <= 0) {
-                            killEnemy(enemy);
-                        }
+                        if (enemy.currentHp <= 0) killEnemy(enemy);
                     }
                 });
                 
                 return p.life > 0;
             });
             
-            // Update particles
+            // Particles
             particles = particles.filter(p => {
                 p.x += p.vx;
                 p.y += p.vy;
@@ -988,68 +929,164 @@
                 return p.life > 0;
             });
             
-            // Regenerate Ki
-            if (player.ki < player.maxKi) {
-                player.ki += 0.05;
+            // Ki regen
+            if (player.ki < player.maxKi) player.ki += 0.05;
+            
+            // Check Dragon Balls collection
+            checkDragonBalls();
+        }
+
+        function checkDragonBalls() {
+            dragonBalls.forEach(db => {
+                if (!db.collected) {
+                    const dist = Math.hypot(player.x - db.x, player.y - db.y);
+                    if (dist < 40) {
+                        db.collected = true;
+                        player.dragonBalls++;
+                        createParticles(db.x, db.y, '#ffaa00', 30);
+                        addMessage(`🔮 Шар Дракона ${db.number}/7 получен!`);
+                        updateDragonBallCounter();
+                        
+                        if (player.dragonBalls >= 7) {
+                            setTimeout(summonShenron, 1000);
+                        }
+                    }
+                }
+            });
+        }
+
+        function updateDragonBallCounter() {
+            const container = document.getElementById('dbCounter');
+            container.innerHTML = '';
+            for (let i = 1; i <= 7; i++) {
+                const db = document.createElement('div');
+                if (i <= player.dragonBalls) {
+                    db.className = 'db-collected';
+                    db.textContent = i;
+                } else {
+                    db.className = 'db-empty';
+                }
+                container.appendChild(db);
             }
         }
 
+        function summonShenron() {
+            document.getElementById('shenronScreen').style.display = 'flex';
+            addMessage('🐉 ШЕНРОН ПОЯВИЛСЯ! ВЫБЕРИТЕ НАГРАДУ!');
+        }
+
+        function chooseReward(type) {
+            document.getElementById('shenronScreen').style.display = 'none';
+            
+            switch(type) {
+                case 'weapon':
+                    addItemToInventory('sword_dragon', 1);
+                    addMessage('⚔️ Получен: Легендарный Меч Дракона!');
+                    break;
+                case 'skill':
+                    player.abilities.push({
+                        id: 'spirit_bomb',
+                        name: 'Духовая бомба',
+                        icon: '',
+                        key: '5',
+                        cooldown: 0,
+                        maxCooldown: 30,
+                        cost: 100,
+                        damage: 500
+                    });
+                    createQuickBar();
+                    addMessage('✨ Получена способность: Духовая бомба!');
+                    break;
+                case 'health':
+                    player.maxHp += 500;
+                    player.maxKi += 200;
+                    player.hp = player.maxHp;
+                    player.ki = player.maxKi;
+                    addMessage('❤️ Здоровье увеличено на 500! Ки на 200!');
+                    break;
+            }
+            
+            // Reset dragon balls after wish
+            setTimeout(() => {
+                dragonBalls.forEach(db => {
+                    db.collected = false;
+                    db.x = Math.random() * WORLD_SIZE;
+                    db.y = Math.random() * WORLD_SIZE;
+                });
+                player.dragonBalls = 0;
+                updateDragonBallCounter();
+                addMessage('🔮 Шары Дракона рассеялись по миру...');
+            }, 3000);
+        }
+
         function render() {
-            // Clear screen
             ctx.fillStyle = '#0a0e27';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
             
             ctx.save();
             ctx.translate(-camera.x, -camera.y);
             
-            // Draw grid
-            drawGrid();
+            // Grid
+            ctx.strokeStyle = 'rgba(255, 140, 0, 0.1)';
+            ctx.lineWidth = 1;
+            const startX = Math.floor(camera.x / 50) * 50;
+            const startY = Math.floor(camera.y / 50) * 50;
             
-            // Draw buildings
-            buildings.forEach(b => {
-                ctx.font = '40px Arial';
-                ctx.textAlign = 'center';
-                ctx.fillText(b.icon, b.x, b.y);
-            });
+            for (let x = startX; x < camera.x + canvas.width; x += 50) {
+                ctx.beginPath();
+                ctx.moveTo(x, camera.y);
+                ctx.lineTo(x, camera.y + canvas.height);
+                ctx.stroke();
+            }
             
-            // Draw items
-            items.forEach(item => {
-                if (isOnScreen(item.x, item.y)) {
+            for (let y = startY; y < camera.y + canvas.height; y += 50) {
+                ctx.beginPath();
+                ctx.moveTo(camera.x, y);
+                ctx.lineTo(camera.x + canvas.width, y);
+                ctx.stroke();
+            }
+            
+            // Dragon Balls
+            dragonBalls.forEach(db => {
+                if (!db.collected && isOnScreen(db.x, db.y)) {
                     ctx.font = '30px Arial';
                     ctx.textAlign = 'center';
-                    ctx.fillText(item.icon, item.x, item.y);
+                    ctx.fillText('🔮', db.x, db.y);
                     
-                    // Glow effect
+                    // Glow
                     ctx.shadowColor = '#ffaa00';
-                    ctx.shadowBlur = 20;
-                    ctx.fillText(item.icon, item.x, item.y);
+                    ctx.shadowBlur = 30;
+                    ctx.fillText('🔮', db.x, db.y);
                     ctx.shadowBlur = 0;
                 }
             });
             
-            // Draw enemies
-            enemies.forEach(enemy => {
-                if (isOnScreen(enemy.x, enemy.y)) {
-                    // Enemy body
-                    ctx.font = '35px Arial';
+            // Items
+            items.forEach(item => {
+                if (isOnScreen(item.x, item.y)) {
+                    ctx.font = '25px Arial';
                     ctx.textAlign = 'center';
-                    ctx.fillText(enemy.icon, enemy.x, enemy.y);
-                    
-                    // Health bar
-                    const hpPercent = enemy.currentHp / enemy.maxHp;
-                    ctx.fillStyle = '#333';
-                    ctx.fillRect(enemy.x - 25, enemy.y - 35, 50, 8);
-                    ctx.fillStyle = hpPercent > 0.5 ? '#0f0' : hpPercent > 0.25 ? '#ff0' : '#f00';
-                    ctx.fillRect(enemy.x - 25, enemy.y - 35, 50 * hpPercent, 8);
-                    
-                    // Name
-                    ctx.fillStyle = '#fff';
-                    ctx.font = '12px Orbitron';
-                    ctx.fillText(enemy.name, enemy.x, enemy.y - 40);
+                    ctx.fillText(item.icon, item.x, item.y);
                 }
             });
             
-            // Draw projectiles
+            // Enemies
+            enemies.forEach(enemy => {
+                if (isOnScreen(enemy.x, enemy.y)) {
+                    ctx.font = '30px Arial';
+                    ctx.textAlign = 'center';
+                    ctx.fillText(enemy.icon, enemy.x, enemy.y);
+                    
+                    // HP bar
+                    const hpPercent = enemy.currentHp / enemy.maxHp;
+                    ctx.fillStyle = '#333';
+                    ctx.fillRect(enemy.x - 20, enemy.y - 30, 40, 6);
+                    ctx.fillStyle = hpPercent > 0.5 ? '#0f0' : hpPercent > 0.25 ? '#ff0' : '#f00';
+                    ctx.fillRect(enemy.x - 20, enemy.y - 30, 40 * hpPercent, 6);
+                }
+            });
+            
+            // Projectiles
             projectiles.forEach(p => {
                 ctx.beginPath();
                 ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
@@ -1061,7 +1098,7 @@
                 ctx.shadowBlur = 0;
             });
             
-            // Draw particles
+            // Particles
             particles.forEach(p => {
                 ctx.globalAlpha = p.alpha;
                 ctx.beginPath();
@@ -1071,70 +1108,45 @@
                 ctx.globalAlpha = 1;
             });
             
-            // Draw player
-            ctx.font = '40px Arial';
+            // Player
+            ctx.font = '35px Arial';
             ctx.textAlign = 'center';
             ctx.fillText('', player.x, player.y);
             
-            // Player aura if Super Saiyan
             if (player.activeBuffs.includes('super_saiyan')) {
                 ctx.beginPath();
-                ctx.arc(player.x, player.y, 35, 0, Math.PI * 2);
+                ctx.arc(player.x, player.y, 30, 0, Math.PI * 2);
                 ctx.fillStyle = 'rgba(255, 215, 0, 0.3)';
                 ctx.fill();
-                ctx.strokeStyle = '#ffd700';
-                ctx.lineWidth = 3;
-                ctx.stroke();
             }
             
             ctx.restore();
         }
 
-        function drawGrid() {
-            ctx.strokeStyle = 'rgba(255, 140, 0, 0.1)';
-            ctx.lineWidth = 1;
-            
-            const startX = Math.floor(camera.x / TILE_SIZE) * TILE_SIZE;
-            const startY = Math.floor(camera.y / TILE_SIZE) * TILE_SIZE;
-            
-            for (let x = startX; x < camera.x + canvas.width; x += TILE_SIZE) {
-                ctx.beginPath();
-                ctx.moveTo(x, camera.y);
-                ctx.lineTo(x, camera.y + canvas.height);
-                ctx.stroke();
-            }
-            
-            for (let y = startY; y < camera.y + canvas.height; y += TILE_SIZE) {
-                ctx.beginPath();
-                ctx.moveTo(camera.x, y);
-                ctx.lineTo(camera.x + canvas.width, y);
-                ctx.stroke();
-            }
-        }
-
         function renderMinimap() {
             minimapCtx.fillStyle = '#0a0e27';
-            minimapCtx.fillRect(0, 0, 200, 200);
+            minimapCtx.fillRect(0, 0, 150, 150);
             
-            const scaleX = 200 / WORLD_WIDTH;
-            const scaleY = 200 / WORLD_HEIGHT;
+            const scale = 150 / WORLD_SIZE;
             
-            // Draw enemies
+            // Dragon Balls on minimap
+            minimapCtx.fillStyle = '#ffaa00';
+            dragonBalls.forEach(db => {
+                if (!db.collected) {
+                    minimapCtx.fillRect(db.x * scale, db.y * scale, 3, 3);
+                }
+            });
+            
+            // Enemies
             minimapCtx.fillStyle = '#ff0000';
-            enemies.forEach(enemy => {
-                minimapCtx.fillRect(enemy.x * scaleX, enemy.y * scaleY, 2, 2);
+            enemies.forEach(e => {
+                minimapCtx.fillRect(e.x * scale, e.y * scale, 2, 2);
             });
             
-            // Draw items
-            minimapCtx.fillStyle = '#00ff00';
-            items.forEach(item => {
-                minimapCtx.fillRect(item.x * scaleX, item.y * scaleY, 2, 2);
-            });
-            
-            // Draw player
+            // Player
             minimapCtx.fillStyle = '#00d4ff';
             minimapCtx.beginPath();
-            minimapCtx.arc(player.x * scaleX, player.y * scaleY, 4, 0, Math.PI * 2);
+            minimapCtx.arc(player.x * scale, player.y * scale, 3, 0, Math.PI * 2);
             minimapCtx.fill();
         }
 
@@ -1146,20 +1158,21 @@
         function createParticles(x, y, color, count) {
             for (let i = 0; i < count; i++) {
                 particles.push({
-                    x: x,
-                    y: y,
-                    vx: (Math.random() - 0.5) * 10,
-                    vy: (Math.random() - 0.5) * 10,
-                    life: 30 + Math.random() * 20,
-                    maxLife: 50,
-                    color: color,
-                    size: 3 + Math.random() * 5,
+                    x, y,
+                    vx: (Math.random() - 0.5) * 8,
+                    vy: (Math.random() - 0.5) * 8,
+                    life: 20 + Math.random() * 20,
+                    maxLife: 40,
+                    color,
+                    size: 2 + Math.random() * 4,
                     alpha: 1
                 });
             }
         }
 
         function useAbility(index) {
+            if (index >= player.abilities.length) return;
+            
             const ability = player.abilities[index];
             
             if (ability.cooldown > 0) {
@@ -1177,93 +1190,88 @@
             
             switch(ability.id) {
                 case 'ki_blast':
-                    const angle = Math.atan2(mouse.worldY - player.y, mouse.worldX - player.x);
+                    const angle = Math.atan2(mouse.y - player.y, mouse.x - player.x);
                     projectiles.push({
-                        x: player.x,
-                        y: player.y,
+                        x: player.x, y: player.y,
                         vx: Math.cos(angle) * 15,
                         vy: Math.sin(angle) * 15,
                         damage: ability.damage + player.attack,
                         life: 60,
                         color: '#00d4ff',
-                        size: 10
+                        size: 8
                     });
                     break;
                     
                 case 'kamehameha':
-                    // Big beam
                     for (let i = -2; i <= 2; i++) {
-                        const angle = Math.atan2(mouse.worldY - player.y, mouse.worldX - player.x) + (i * 0.1);
+                        const a = Math.atan2(mouse.y - player.y, mouse.x - player.x) + (i * 0.1);
                         projectiles.push({
-                            x: player.x,
-                            y: player.y,
-                            vx: Math.cos(angle) * 20,
-                            vy: Math.sin(angle) * 20,
+                            x: player.x, y: player.y,
+                            vx: Math.cos(a) * 20,
+                            vy: Math.sin(a) * 20,
                             damage: ability.damage + player.attack,
                             life: 100,
                             color: '#0099ff',
-                            size: 15
+                            size: 12
                         });
                     }
                     addMessage('💙 КА-МЕ-ХА-МЕ-ХА!!!');
                     break;
                     
                 case 'teleport':
-                    player.x = mouse.worldX;
-                    player.y = mouse.worldY;
-                    createParticles(player.x, player.y, '#00d4ff', 20);
+                    player.x = mouse.x;
+                    player.y = mouse.y;
+                    createParticles(player.x, player.y, '#00d4ff', 15);
                     break;
                     
                 case 'super_saiyan':
                     if (!player.activeBuffs.includes('super_saiyan')) {
                         player.activeBuffs.push('super_saiyan');
                         player.attack *= 2;
-                        addMessage('🔥 СУПЕР САЙЯН! Сила удвоена!');
+                        addMessage('🔥 СУПЕР САЙЯН!');
                         setTimeout(() => {
                             player.activeBuffs = player.activeBuffs.filter(b => b !== 'super_saiyan');
                             player.attack /= 2;
-                            addMessage('Супер Сайян закончился');
                         }, 30000);
                     }
+                    break;
+                    
+                case 'spirit_bomb':
+                    enemies.forEach(e => {
+                        const dist = Math.hypot(e.x - player.x, e.y - player.y);
+                        if (dist < 300) {
+                            e.currentHp -= ability.damage;
+                            if (e.currentHp <= 0) killEnemy(e);
+                        }
+                    });
+                    addMessage('✨ ДУХОВАЯ БОМБА!');
                     break;
             }
             
             updateQuickBar();
         }
 
-        function handleLeftClick() {
-            // Check if clicked on item
+        function handleAttack() {
+            // Check items
             items.forEach((item, index) => {
-                const dist = Math.hypot(mouse.worldX - item.x, mouse.worldY - item.y);
+                const dist = Math.hypot(mouse.x - item.x, mouse.y - item.y);
                 if (dist < 30) {
-                    pickupItem(item, index);
+                    addItemToInventory(item.itemId, 1);
+                    items.splice(index, 1);
+                    addMessage(`📦 Получено: ${item.name}`);
                 }
             });
             
-            // Check if clicked on enemy
+            // Check enemies
             enemies.forEach(enemy => {
-                const dist = Math.hypot(mouse.worldX - enemy.x, mouse.worldY - enemy.y);
-                if (dist < 40) {
-                    // Basic attack
+                const dist = Math.hypot(mouse.x - enemy.x, mouse.y - enemy.y);
+                if (dist < 35) {
                     enemy.currentHp -= player.attack;
                     createParticles(enemy.x, enemy.y, '#ff0000', 5);
                     
-                    if (enemy.currentHp <= 0) {
-                        killEnemy(enemy);
-                    }
+                    if (enemy.currentHp <= 0) killEnemy(enemy);
                 }
             });
-        }
-
-        function pickupItem(item, index) {
-            if (item.type === 'consumable') {
-                addItemToInventory(item.name.replace(/\s/g, '_').toLowerCase(), 1);
-            } else {
-                addItemToInventory(Object.keys(itemsDB).find(key => itemsDB[key] === item), 1);
-            }
-            
-            items.splice(index, 1);
-            addMessage(`📦 Получено: ${item.name}`);
         }
 
         function addItemToInventory(itemId, count) {
@@ -1271,11 +1279,7 @@
             if (existing) {
                 existing.count += count;
             } else {
-                player.inventory.push({
-                    id: itemId,
-                    count: count,
-                    ...itemsDB[itemId]
-                });
+                player.inventory.push({ id: itemId, count, ...itemsDB[itemId] });
             }
             updateInventoryUI();
         }
@@ -1284,20 +1288,15 @@
             const index = enemies.indexOf(enemy);
             if (index > -1) {
                 enemies.splice(index, 1);
-                
-                // Rewards
                 player.xp += enemy.xp;
                 player.zeni += enemy.zeni;
-                
-                createParticles(enemy.x, enemy.y, '#ffaa00', 20);
-                addMessage(`💀 ${enemy.name} повержен! +${enemy.xp} XP, +${enemy.zeni} Z`);
+                createParticles(enemy.x, enemy.y, '#ffaa00', 15);
+                addMessage(`💀 ${enemy.name} повержен! +${enemy.xp} XP`);
                 
                 checkLevelUp();
                 
-                // Chance for loot
-                if (Math.random() < 0.3) {
-                    spawnItem();
-                }
+                if (Math.random() < 0.3) spawnItem();
+                if (enemies.length < 30) setTimeout(() => spawnEnemy(), 5000);
             }
         }
 
@@ -1306,109 +1305,35 @@
                 player.xp -= player.xpToNext;
                 player.level++;
                 player.xpToNext = Math.floor(player.xpToNext * 1.5);
-                
                 player.maxHp += 20;
                 player.maxKi += 10;
                 player.hp = player.maxHp;
                 player.ki = player.maxKi;
                 player.attack += 10;
-                player.defense += 5;
                 
-                addMessage(`🎉 НОВЫЙ УРОВЕНЬ! Теперь вы ${player.level} уровня!`);
+                addMessage(`🎉 НОВЫЙ УРОВЕНЬ! ${player.level}`);
                 
-                // Unlock abilities
-                if (player.level === 5) {
-                    addMessage('🔓 Разблокирована способность: Камехамеха!');
-                } else if (player.level === 10) {
-                    addMessage('🔓 Разблокирована способность: Телепорт!');
-                } else if (player.level === 20) {
-                    addMessage('🔓 Разблокирована способность: Супер Сайян!');
-                }
+                if (player.level === 5) addMessage('🔓 Открыта Камехамеха!');
+                if (player.level === 10) addMessage('🔓 Открыт Телепорт!');
+                if (player.level === 20) addMessage('🔓 Открыт Супер Сайян!');
             }
         }
 
-        function toggleBuildingMenu() {
-            const menu = document.getElementById('buildingMenu');
-            menu.classList.toggle('show');
-        }
-
-        function closeBuildingMenu() {
-            document.getElementById('buildingMenu').classList.remove('show');
-        }
-
-        function build(type) {
-            const costs = {
-                'house': 500,
-                'training': 1000,
-                'lab': 2000,
-                'farm': 750
-            };
+        function createQuickBar() {
+            const bar = document.getElementById('quickBar');
+            bar.innerHTML = '';
             
-            const icons = {
-                'house': '🏠',
-                'training': '',
-                'lab': '🔬',
-                'farm': ''
-            };
-            
-            if (player.zeni < costs[type]) {
-                addMessage('❌ Недостаточно Зени!');
-                return;
-            }
-            
-            player.zeni -= costs[type];
-            buildings.push({
-                type: type,
-                icon: icons[type],
-                x: player.x + 60,
-                y: player.y
+            player.abilities.forEach((ability, index) => {
+                const slot = document.createElement('div');
+                slot.className = 'ability-slot';
+                slot.id = `ability-${index}`;
+                slot.innerHTML = `
+                    <div class="ability-key">${ability.key}</div>
+                    <div class="ability-icon">${ability.icon}</div>
+                `;
+                slot.onclick = () => useAbility(index);
+                bar.appendChild(slot);
             });
-            
-            addMessage(`🏗️ Построено: ${type}!`);
-            closeBuildingMenu();
-            updateUI();
-        }
-
-        function switchTab(tab) {
-            document.querySelectorAll('.left-panel .tab').forEach(t => t.classList.remove('active'));
-            event.target.classList.add('active');
-            
-            document.getElementById('characterTab').classList.add('hidden');
-            document.getElementById('questsTab').classList.add('hidden');
-            document.getElementById(tab + 'Tab').classList.remove('hidden');
-        }
-
-        function switchRightTab(tab) {
-            document.querySelectorAll('.right-panel .tab').forEach(t => t.classList.remove('active'));
-            event.target.classList.add('active');
-            
-            document.getElementById('inventoryTab').classList.add('hidden');
-            document.getElementById('shopTab').classList.add('hidden');
-            document.getElementById(tab + 'Tab').classList.remove('hidden');
-            
-            if (tab === 'shop') updateShopUI();
-        }
-
-        function updateUI() {
-            // Stats
-            document.getElementById('hpBar').style.width = (player.hp / player.maxHp * 100) + '%';
-            document.getElementById('hpText').textContent = `${Math.floor(player.hp)}/${player.maxHp}`;
-            document.getElementById('kiBar').style.width = (player.ki / player.maxKi * 100) + '%';
-            document.getElementById('kiText').textContent = `${Math.floor(player.ki)}/${player.maxKi}`;
-            document.getElementById('xpBar').style.width = (player.xp / player.xpToNext * 100) + '%';
-            document.getElementById('levelVal').textContent = player.level;
-            document.getElementById('zeni').textContent = player.zeni;
-            document.getElementById('coords').textContent = `${Math.floor(player.x)}, ${Math.floor(player.y)}`;
-            
-            // Character stats
-            document.getElementById('attackStat').textContent = player.attack;
-            document.getElementById('defenseStat').textContent = player.defense;
-            document.getElementById('speedStat').textContent = player.speed;
-            document.getElementById('luckStat').textContent = player.luck;
-            
-            updateQuickBar();
-            updateInventoryUI();
-            updateEquipmentUI();
         }
 
         function updateQuickBar() {
@@ -1417,20 +1342,36 @@
                 if (slot) {
                     if (ability.cooldown > 0) {
                         slot.style.opacity = '0.5';
-                        let cooldownDiv = slot.querySelector('.ability-cooldown');
-                        if (!cooldownDiv) {
-                            cooldownDiv = document.createElement('div');
-                            cooldownDiv.className = 'ability-cooldown';
-                            slot.appendChild(cooldownDiv);
+                        let cd = slot.querySelector('.ability-cooldown');
+                        if (!cd) {
+                            cd = document.createElement('div');
+                            cd.className = 'ability-cooldown';
+                            cd.style.cssText = 'position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,0.8);color:#fff;font-size:0.7em;text-align:center;';
+                            slot.appendChild(cd);
                         }
-                        cooldownDiv.textContent = Math.ceil(ability.cooldown) + 'с';
+                        cd.textContent = Math.ceil(ability.cooldown) + 'с';
                     } else {
                         slot.style.opacity = '1';
-                        const cooldownDiv = slot.querySelector('.ability-cooldown');
-                        if (cooldownDiv) cooldownDiv.remove();
+                        const cd = slot.querySelector('.ability-cooldown');
+                        if (cd) cd.remove();
                     }
                 }
             });
+        }
+
+        function updateUI() {
+            document.getElementById('hpBar').style.width = (player.hp / player.maxHp * 100) + '%';
+            document.getElementById('kiBar').style.width = (player.ki / player.maxKi * 100) + '%';
+            document.getElementById('levelVal').textContent = player.level;
+            document.getElementById('zeni').textContent = player.zeni;
+            document.getElementById('attackVal').textContent = player.attack;
+            document.getElementById('defenseVal').textContent = player.defense;
+            document.getElementById('speedVal').textContent = player.speed;
+            
+            updateQuickBar();
+            updateInventoryUI();
+            updateEquipmentUI();
+            updateAbilitiesUI();
         }
 
         function updateInventoryUI() {
@@ -1441,12 +1382,11 @@
                 const slot = document.createElement('div');
                 slot.className = 'item-slot';
                 slot.innerHTML = `
-                    ${item.icon}
+                    ${item.icon || '📦'}
                     ${item.count > 1 ? `<div class="item-count">${item.count}</div>` : ''}
                 `;
                 slot.onclick = () => useItem(index);
-                slot.onmouseenter = (e) => showTooltip(e, item.name, `Тип: ${item.type}\n${item.attack ? `Атака: +${item.attack}` : ''}${item.defense ? `\nЗащита: +${item.defense}` : ''}`);
-                slot.onmouseleave = hideTooltip;
+                slot.title = item.name;
                 grid.appendChild(slot);
             });
         }
@@ -1455,49 +1395,32 @@
             const grid = document.getElementById('equipmentGrid');
             grid.innerHTML = '';
             
-            const slots = ['weapon', 'armor', 'accessory'];
-            const slotIcons = { weapon: '⚔️', armor: '', accessory: '' };
-            
-            slots.forEach(slot => {
+            ['weapon', 'armor'].forEach(slot => {
                 const div = document.createElement('div');
                 div.className = 'item-slot';
                 if (player.equipment[slot]) {
-                    div.classList.add('equipped');
-                    div.innerHTML = player.equipment[slot].icon;
-                    div.title = player.equipment[slot].name;
+                    div.textContent = player.equipment[slot].icon;
+                    div.style.borderColor = '#00ff00';
                 } else {
-                    div.innerHTML = slotIcons[slot];
+                    div.textContent = slot === 'weapon' ? '⚔️' : '';
                     div.style.opacity = '0.3';
                 }
                 grid.appendChild(div);
             });
         }
 
-        function updateShopUI() {
-            const container = document.getElementById('shopItems');
-            container.innerHTML = '';
+        function updateAbilitiesUI() {
+            const list = document.getElementById('abilitiesList');
+            list.innerHTML = '';
             
-            shopItems.forEach(itemId => {
-                const item = itemsDB[itemId];
+            player.abilities.forEach((ability, index) => {
                 const div = document.createElement('div');
-                div.className = 'item-slot';
-                div.style.width = '100%';
-                div.style.height = '60px';
-                div.style.display = 'flex';
-                div.style.alignItems = 'center';
-                div.style.justifyContent = 'space-between';
-                div.style.padding = '10px';
+                div.style.cssText = 'background:rgba(255,140,0,0.1);border:1px solid #ff8c00;border-radius:5px;padding:8px;margin:5px 0;font-size:0.85em;';
                 div.innerHTML = `
-                    <div style="display: flex; align-items: center; gap: 10px;">
-                        <span style="font-size: 2em;">${item.icon}</span>
-                        <div>
-                            <div style="color: #ff8c00; font-weight: bold;">${item.name}</div>
-                            <div style="color: #ffaa00; font-size: 0.9em;">${item.price} Z</div>
-                        </div>
-                    </div>
+                    <div style="color:#ff8c00;font-weight:bold;">${ability.key}. ${ability.name}</div>
+                    <div style="color:#888;font-size:0.9em;">${ability.cost} Ки | Урон: ${ability.damage || '-'}</div>
                 `;
-                div.onclick = () => buyItem(itemId);
-                container.appendChild(div);
+                list.appendChild(div);
             });
         }
 
@@ -1506,38 +1429,27 @@
             
             if (item.type === 'consumable') {
                 switch(item.effect) {
-                    case 'heal_full':
+                    case 'heal':
                         player.hp = player.maxHp;
-                        addMessage('❤️ Полное восстановление здоровья!');
+                        addMessage('❤️ Полное восстановление!');
                         break;
-                    case 'ki_full':
+                    case 'ki':
                         player.ki = player.maxKi;
                         addMessage('⚡ Ки восстановлено!');
-                        break;
-                    case 'attack_boost':
-                        player.attack += 20;
-                        addMessage('💪 Сила увеличена на 30 секунд!');
-                        setTimeout(() => { player.attack -= 20; }, 30000);
                         break;
                 }
                 
                 item.count--;
-                if (item.count <= 0) {
-                    player.inventory.splice(index, 1);
-                }
-            } else if (item.type === 'weapon' || item.type === 'armor' || item.type === 'accessory') {
-                // Equip item
+                if (item.count <= 0) player.inventory.splice(index, 1);
+            } else if (item.type === 'weapon' || item.type === 'armor') {
                 const slot = item.type;
                 if (player.equipment[slot]) {
-                    // Return old item to inventory
                     const oldItem = player.equipment[slot];
-                    const oldKey = Object.keys(itemsDB).find(key => itemsDB[key] === oldItem);
-                    addItemToInventory(oldKey, 1);
+                    const oldKey = Object.keys(itemsDB).find(k => itemsDB[k] === oldItem);
+                    if (oldKey) addItemToInventory(oldKey, 1);
                 }
                 
                 player.equipment[slot] = item;
-                
-                // Apply stats
                 if (item.attack) player.attack += item.attack;
                 if (item.defense) player.defense += item.defense;
                 
@@ -1548,30 +1460,57 @@
             updateUI();
         }
 
+        function switchTab(tab) {
+            document.querySelectorAll('.left-panel .tab').forEach(t => t.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            document.getElementById('charTab').classList.add('hidden');
+            document.getElementById('invTab').classList.add('hidden');
+            document.getElementById(tab + 'Tab').classList.remove('hidden');
+        }
+
+        function switchRightTab(tab) {
+            document.querySelectorAll('.right-panel .tab').forEach(t => t.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            document.getElementById('abilitiesTab').classList.add('hidden');
+            document.getElementById('shopTab').classList.add('hidden');
+            document.getElementById(tab + 'Tab').classList.remove('hidden');
+            
+            if (tab === 'shop') updateShopUI();
+        }
+
+        function updateShopUI() {
+            const container = document.getElementById('shopItems');
+            container.innerHTML = '';
+            
+            shopItems.forEach(itemId => {
+                const item = itemsDB[itemId];
+                const div = document.createElement('div');
+                div.style.cssText = 'background:rgba(255,140,0,0.1);border:2px solid #ff8c00;border-radius:8px;padding:10px;margin:8px 0;cursor:pointer;';
+                div.innerHTML = `
+                    <div style="display:flex;align-items:center;gap:10px;">
+                        <span style="font-size:2em;">${item.icon || '📦'}</span>
+                        <div>
+                            <div style="color:#ff8c00;font-weight:bold;">${item.name}</div>
+                            <div style="color:#ffaa00;">${item.price} Z</div>
+                        </div>
+                    </div>
+                `;
+                div.onclick = () => buyItem(itemId);
+                container.appendChild(div);
+            });
+        }
+
         function buyItem(itemId) {
             const item = itemsDB[itemId];
-            
             if (player.zeni >= item.price) {
                 player.zeni -= item.price;
                 addItemToInventory(itemId, 1);
                 addMessage(`🛒 Куплено: ${item.name}`);
-                updateUI();
             } else {
                 addMessage('❌ Недостаточно Зени!');
             }
-        }
-
-        function showTooltip(e, title, desc) {
-            const tooltip = document.getElementById('tooltip');
-            document.getElementById('tooltipTitle').textContent = title;
-            document.getElementById('tooltipDesc').textContent = desc;
-            tooltip.style.display = 'block';
-            tooltip.style.left = e.pageX + 10 + 'px';
-            tooltip.style.top = e.pageY + 10 + 'px';
-        }
-
-        function hideTooltip() {
-            document.getElementById('tooltip').style.display = 'none';
         }
 
         function addMessage(text) {
@@ -1582,19 +1521,15 @@
             log.appendChild(msg);
             log.scrollTop = log.scrollHeight;
             
-            while (log.children.length > 20) {
+            while (log.children.length > 15) {
                 log.removeChild(log.firstChild);
             }
         }
 
-        // Window resize
         window.addEventListener('resize', () => {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
         });
-
-        // Initialize
-        createDragonBalls();
     </script>
 </body>
 </html>
